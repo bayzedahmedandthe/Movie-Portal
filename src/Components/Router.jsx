@@ -5,6 +5,7 @@ import MovieAdventure from "./MovieAdventure";
 import Home from "./Home";
 import AllMovies from "./AllMovies";
 import Login from "./Login";
+import Register from "./Register";
 
 const Router = createBrowserRouter([
     {
@@ -27,6 +28,9 @@ const Router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login></Login>
+            }, {
+                path: "/register", 
+                element: <Register></Register>
             }
         ]
     },
