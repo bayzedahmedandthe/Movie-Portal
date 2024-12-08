@@ -1,8 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 const Register = () => {
+    const navigate = useNavigate()
     const context = useContext(AuthContext);
     const { creatUser, updateUserProfile, setUser } = context;
     const handleRegister = event => {
@@ -12,21 +17,31 @@ const Register = () => {
         const password = form.password.value;
         const photo = form.photo.value;
         const name = form.name.value;
-
+        form.reset();
+        if(password.length < 6){
+            return toast.error("Password must be 6 character")
+        }
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+        if(!passwordRegex.test(password)){
+            return toast.error("password at least one uppercase, one lowercase")
+        }
         // console.log(email, password);
         creatUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
+                navigate("/")
+                toast.success("Registation successfull");
+                
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
                         // console.log("update user");
                         setUser((prevUser) => { return { ...prevUser, displayName: name, photoURL: photo } })
                     })
                     .catch((error => {
-                        // console.log(error);
+                        console.log(error);
                     }))
             })
-            .then(error => {
+            .catch(error => {
                 console.log(error);
             })
 
@@ -63,6 +78,9 @@ const Register = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn bg-cyan-300 text-xl">Register</button>
+                        </div>
+                        <div className="pt-4">
+                            <p>Alredy have an account <Link className="text-blue-700 hover:underline" to="/login">   Login</Link></p>
                         </div>
                     </form>
                 </div>

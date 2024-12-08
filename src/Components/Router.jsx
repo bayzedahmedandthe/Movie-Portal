@@ -6,16 +6,19 @@ import Home from "./Home";
 import AllMovies from "./AllMovies";
 import Login from "./Login";
 import Register from "./Register";
+import AddMovie from "./AddMovie";
+import MyFavorites from "./MyFavorites";
+import PrivetRoute from "./PrivetRoute";
 
 const Router = createBrowserRouter([
     {
         path: "/",
-        element:<Layout></Layout>,
+        element: <Layout></Layout>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
-              element: <Home></Home>
+                element: <Home></Home>
             },
             {
                 path: "/adventure",
@@ -28,9 +31,18 @@ const Router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login></Login>
-            }, {
-                path: "/register", 
+            },
+            {
+                path: "/register",
                 element: <Register></Register>
+            },
+            {
+                path: "/addmovie",
+                element: <PrivetRoute><AddMovie></AddMovie></PrivetRoute>
+            },
+            {
+                path: "/myfavorites",
+                element: <PrivetRoute><MyFavorites></MyFavorites></PrivetRoute>
             }
         ]
     },

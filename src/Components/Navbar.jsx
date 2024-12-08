@@ -1,19 +1,21 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import auth from "../../Firebase.init";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Navbar = () => {
-    const {user, logOut}  = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const handleLogOut = () => {
-        logOut(auth)
-        .then(result => {
-            console.log(result);
-        })
-        .then(error => {
-            console.log(error);
-        })
+        logOut()
+            .then(() => {
+
+                toast.success("Signout successfull");
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div className=" pt-10 bg-cyan-300 ">
@@ -37,37 +39,42 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-cyan-400 rounded-box z-[1]  w-52 p-2 shadow">
-                            <li className="border-2 border-purple-500 rounded-lg px-4 py-1"><NavLink to="/">Home</NavLink></li>
-                            <li>
-
-                            </li>
-                            <li className="border-2 border-purple-500 rounded-lg px-4 py-1"><NavLink to="/allmovies">All movies</NavLink></li>
+                            <li className=" rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/">Home</NavLink></li>
+                            <li className="rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/allmovies">All movies</NavLink></li>
+                            <li className=" rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/addmovie">Add movie</NavLink></li>
+                            <li className=" rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/myfavorites">My favorites</NavLink></li>
                         </ul>
                     </div>
-                    <NavLink to="/" className="text-2xl font-demibold">Movie  Portal</NavLink>
+                    <NavLink to="/" className="text-2xl font-semibold">Movie  Portal</NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className=" menu-horizontal px-1 text-lg flex items-center gap-3">
-                        <li className="border-2 border-purple-500 rounded-lg px-4 py-1"><NavLink to="/">Home</NavLink></li>
-                        <li>
+                        <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/">Home</NavLink></li>
+                        <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/allmovies">All movies</NavLink></li>
+                        {
+                            user && <div className="flex items-center gap-3">
+                                <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/addmovie">Add movie</NavLink></li>
+                                <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/myfavorites">My favorites</NavLink></li>
+                            </div>
+                        }
 
-                        </li>
-                        <li className="border-2 border-purple-500 rounded-lg px-4 py-1"><NavLink to="/allmovies">All movies</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end ">
-                   {
-                    user? <div className="flex items-center gap-3 border-2">
-                        <div><img src={user.photoURL} alt="" /></div>
-                        <div><button onClick={handleLogOut} className="btn btn-primary">Logout</button> </div>
-                    </div>: <div className="flex items-center gap-3">
-                        <div className="border-2 border-purple-500 rounded-lg px-4 mr-3 py-1"><NavLink to="/login" className="text-lg">Login</NavLink></div>
-                        <div className="border-2 border-purple-500 rounded-lg px-4 py-1"><NavLink to="/register" className="text-lg">Register</NavLink></div>
-                    </div>
-                   }
+                    {
+                        user ? <div className="flex items-center gap-3 ">
+                            <img className="h-12 w-12 rounded-xl" src={user.photoURL} alt="" />
+                            <p>{user.displayName}</p>
+
+                            <div><button onClick={handleLogOut} className="rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold">Logout</button> </div>
+                        </div> : <div className="flex items-center gap-3">
+                            <div className=" rounded-lg px-4 mr-3 py-1 btn hover:bg-black border-2 bg-black text-white font-semibold"><NavLink to="/login" className="text-lg">Login</NavLink></div>
+                            <div className=" rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold"><NavLink to="/register" className="text-lg">Register</NavLink></div>
+                        </div>
+                    }
                 </div>
-                
-                </div>
+
+            </div>
         </div>
     );
 };
