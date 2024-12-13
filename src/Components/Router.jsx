@@ -9,6 +9,8 @@ import Register from "./Register";
 import AddMovie from "./AddMovie";
 import MyFavorites from "./MyFavorites";
 import PrivetRoute from "./PrivetRoute";
+import MovieDetails from "./MovieDetails";
+
 
 const Router = createBrowserRouter([
     {
@@ -22,11 +24,13 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/adventure",
-                element: <MovieAdventure></MovieAdventure>
+                element: <MovieAdventure></MovieAdventure>,
+                // loader: () => fetch("http://localhost:5000/highest-rated-reviews")
             },
             {
                 path: "/allmovies",
-                element: <AllMovies></AllMovies>
+                element: <AllMovies></AllMovies>,
+                loader: () => fetch('http://localhost:5000/movies')
             },
             {
                 path: "/login",
@@ -43,8 +47,14 @@ const Router = createBrowserRouter([
             {
                 path: "/myfavorites",
                 element: <PrivetRoute><MyFavorites></MyFavorites></PrivetRoute>
-            }
+            },
+            {
+                path: "/movie/:id",
+                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+                element: <MovieDetails></MovieDetails>
+
+            },
         ]
-    },
+    }
 ]);
 export default Router;

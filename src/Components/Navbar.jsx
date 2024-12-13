@@ -18,7 +18,7 @@ const Navbar = () => {
             })
     }
     return (
-        <div className=" pt-10 bg-cyan-300 ">
+        <div className=" pt-6  ">
             <div className="w-11/12 mx-auto navbar pb-[36px]">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -44,6 +44,9 @@ const Navbar = () => {
                             <li className=" rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/addmovie">Add movie</NavLink></li>
                             <li className=" rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/myfavorites">My favorites</NavLink></li>
                         </ul>
+                 
+
+                    
                     </div>
                     <NavLink to="/" className="text-2xl font-semibold">Movie  Portal</NavLink>
                 </div>
@@ -64,7 +67,7 @@ const Navbar = () => {
                     {
                         user ? <div className="flex items-center gap-3 ">
                             <img className="h-12 w-12 rounded-xl" src={user.photoURL} alt="" />
-                            <p>{user.displayName}</p>
+                            <p className="text-lg font-semibold">{user.displayName}</p>
 
                             <div><button onClick={handleLogOut} className="rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold">Logout</button> </div>
                         </div> : <div className="flex items-center gap-3">

@@ -11,7 +11,7 @@ const Header = () => {
                 <img
                     src={banner1}
                     className="w-full filter brightness-50" />
-                <div className="absolute text-white top-20 left-32 font-semibold text-xl">
+                <div className="absolute text-white top-20 left-32 font-semibold text-2xl">
                     <p>On our site you will find many types of mind-blowing movies. <br /> Such as action movies, romantic movies, horros movies, english movies, etc.</p>
                 </div>
 

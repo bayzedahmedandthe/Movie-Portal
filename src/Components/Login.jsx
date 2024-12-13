@@ -41,6 +41,7 @@ const Login = () => {
     }
     const handleForgetPassword = () => {
         sendPasswordResetEmail(auth, email);
+        navigate("/")
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
