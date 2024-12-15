@@ -16,6 +16,10 @@ const Navbar = () => {
             .catch(error => {
                 console.log(error);
             })
+        const [theme, setTheme] = useState(false);
+        const handleTheme = () => {
+            setTheme(!theme);
+        }
     }
     return (
         <div className=" pt-6  ">
@@ -44,20 +48,20 @@ const Navbar = () => {
                             <li className=" rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/addmovie">Add movie</NavLink></li>
                             <li className=" rounded-lg  hover:underline hover:text-blue-600"><NavLink to="/myfavorites">My favorites</NavLink></li>
                         </ul>
-                 
 
-                    
+
+
                     </div>
-                    <NavLink to="/" className="text-2xl font-semibold">Movie  Portal</NavLink>
+                    <NavLink to="/" className="text-2xl text-cyan-500 font-semibold">Movie  Portal</NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className=" menu-horizontal px-1 text-lg flex items-center gap-3">
-                        <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/">Home</NavLink></li>
-                        <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/allmovies">All movies</NavLink></li>
+                        <li className=" rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold"><NavLink to="/">Home</NavLink></li>
+                        <li className=" rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold"><NavLink to="/allmovies">All movies</NavLink></li>
                         {
                             user && <div className="flex items-center gap-3">
-                                <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/addmovie">Add movie</NavLink></li>
-                                <li className=" rounded-lg pr-3 hover:underline hover:text-blue-600"><NavLink to="/myfavorites">My favorites</NavLink></li>
+                                <li className=" rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold"><NavLink to="/addmovie">Add movie</NavLink></li>
+                                <li className="rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold"><NavLink to="/myfavorites">My favorites</NavLink></li>
                             </div>
                         }
 
@@ -67,7 +71,7 @@ const Navbar = () => {
                     {
                         user ? <div className="flex items-center gap-3 ">
                             <img className="h-12 w-12 rounded-xl" src={user.photoURL} alt="" />
-                            <p className="text-lg font-semibold">{user.displayName}</p>
+                            <p className="text-lg text-cyan-500 font-semibold">{user.displayName}</p>
 
                             <div><button onClick={handleLogOut} className="rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold">Logout</button> </div>
                         </div> : <div className="flex items-center gap-3">
@@ -75,6 +79,8 @@ const Navbar = () => {
                             <div className=" rounded-lg px-4 py-1 btn hover:bg-black  border-2 bg-black text-white font-semibold"><NavLink to="/register" className="text-lg">Register</NavLink></div>
                         </div>
                     }
+
+                    {/* <button className="btn">hhh</button> */}
                 </div>
 
             </div>

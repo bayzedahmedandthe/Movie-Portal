@@ -1,11 +1,17 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./navBar";
 import Footer from "./Footer";
+import { useState } from "react";
 
 
 const Layout = () => {
+    const [theme, setTheme] = useState(false);
+    const handleTheme = () => {
+        setTheme(!theme);
+    }
     return (
-        <div className="bg-gray-50">
+        <div className={`${theme && "bg-slate-800 "}`}>
+           <div onClick={handleTheme} className="lg:ml-6 lg:mt-6 w-16 h-16 rounded-full bg-white flex justify-center dark:bg-slate-800"><button className="text-xl">{theme ? "LHT": "DRK"}</button></div>
             <div>
             <Navbar></Navbar>
             </div>

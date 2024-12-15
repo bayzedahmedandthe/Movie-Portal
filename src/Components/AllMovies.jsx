@@ -1,30 +1,27 @@
-import { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
 const AllMovies = () => {
     const movieData = useLoaderData();
-    // console.log(movieData);
+   const [data, setData] = useState(movieData);
+    const [search, setSearch] = useState("");
+    useEffect(() => {
+        fetch(`http://localhost:5000/movies?searchparams=${search}`)
+        .then(res => res.json())
+        .then(data => setData(data))
+    }, [search])
     return (
         <div>
-            <h2 className="text-2xl font-semibold  pb-12">All movies</h2>
+            <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-semibold text-cyan-500 pb-12">All movies</h2>
+                <div> <h2 className="text-cyan-500 text-xl">Search Movie</h2> <input
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="input input-info my-3" type="text" placeholder="search" name="serch" /></div>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-20">
                 {
-                    movieData.map(movie => <MovieCard movieData={movie} key={movie}></MovieCard>)
-                        // <div className="border rounded-xl bg-white shadow-lg">
-                        //     <div className="p-8">
-                        //         <img className="rounded-lg" src={movie.poster} alt="" />
-                        //         <h2 className="pt-3 text-xl font-semibold">{movie.title}</h2>
-                        //         <p className="pt-2"><span className="font-semibold">Genre</span>: {movie.genre}</p>
-                        //         <p className="pt-2"><span className="font-semibold pr-1">Duration: </span> {movie.duration}</p>
-                        //         <p className="pt-2"><span className="font-semibold pr-1">Release Year: </span> {movie.release}</p>
-                        //         <p className="pt-2"><span className="font-semibold pr-1">Rating: </span> {movie.rating}</p>
-                        //         {
-                        //             user ? <button className="btn bg-cyan-300 w-full"><Link to={`movie/${_id}`}>See Details</Link></button> :
-                        //                 <button className="btn bg-cyan-300 w-full"><Link to="/login">See Details</Link></button>
-                        //         }
-                        //     </div>
-                        // </div>)
+                    data.map(movie => <MovieCard movieData={movie} key={movie}></MovieCard>)
                 }
             </div>
         </div>

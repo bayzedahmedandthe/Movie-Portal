@@ -25,7 +25,6 @@ const Router = createBrowserRouter([
             {
                 path: "/adventure",
                 element: <MovieAdventure></MovieAdventure>,
-                // loader: () => fetch("http://localhost:5000/highest-rated-reviews")
             },
             {
                 path: "/allmovies",
@@ -46,7 +45,8 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/myfavorites",
-                element: <PrivetRoute><MyFavorites></MyFavorites></PrivetRoute>
+                element: <PrivetRoute><MyFavorites></MyFavorites></PrivetRoute>,
+                loader: () => fetch("http://localhost:5000/favorites")
             },
             {
                 path: "/movie/:id",

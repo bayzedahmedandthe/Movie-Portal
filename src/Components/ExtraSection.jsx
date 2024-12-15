@@ -5,7 +5,7 @@ const ExtraSection = () => {
     return (
         <div className="border-2 p-4 rounded-lg">
             <div>
-                <h2 className="text-2xl font-semibold pb-8">Comming soon</h2>
+                <h2 className="text-2xl text-cyan-500 font-semibold pb-8">Comming soon</h2>
                 <Marquee autoFill pauseOnHover>
                     <div className="bg-[url('https://i.ibb.co.com/8976Jmv/images-22.jpg')] lg:h-[200px] lg:w-[200px]">
 

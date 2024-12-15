@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 
 
 const AddMovie = () => {
@@ -21,8 +22,8 @@ const AddMovie = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             form.reset();
+            toast.success("Added successfull")
         })
         fetch("http://localhost:5000/highest-rated-reviews", {
             method: "post", 
@@ -33,8 +34,9 @@ const AddMovie = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            
             form.reset();
+            toast.success("Added successfull")
         })
     }
     return (
@@ -43,7 +45,7 @@ const AddMovie = () => {
                 <form onSubmit={handleAddMovie}>
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="">
-                            <h3 className="text-lg font-semibold py-2">Movie poster</h3>
+                            <h3 className="text-lg text-cyan-500 font-semibold py-2">Movie poster</h3>
                             <input
                                 name="poster"
                                 type="text"
@@ -52,7 +54,7 @@ const AddMovie = () => {
                                 className="input input-bordered   w-full " />
                         </div>
                         <div className="">
-                            <h3 className="text-lg font-semibold py-2">Movie title</h3>
+                            <h3 className="text-lg font-semibold text-cyan-500 py-2">Movie title</h3>
                             <input
                                 name="title"
                                 type="text"
@@ -62,7 +64,7 @@ const AddMovie = () => {
 
                         </div>
                         <div className="">
-                            <h3 className="text-lg font-semibold py-2">Genre</h3>
+                            <h3 className="text-lg text-cyan-500 font-semibold py-2">Genre</h3>
                             <select className="select select-bordered md:pr-[510px]" name="genre" id="">
                                 <option disabled selected>Select genre</option>
                                 <option value="Comedy">comedy</option>
@@ -73,7 +75,7 @@ const AddMovie = () => {
                             </select>
                         </div>
                         <div className="">
-                            <h3 className="text-lg font-semibold py-2">Duration</h3>
+                            <h3 className="text-lg text-cyan-500 font-semibold py-2">Duration</h3>
                             <input
                                 name="duration"
                                 type="text"
@@ -82,7 +84,7 @@ const AddMovie = () => {
                                 className="input input-bordered w-full " />
                         </div>
                         <div className="">
-                            <h3 className="text-lg font-semibold py-2">Release year</h3>
+                            <h3 className="text-lg text-cyan-500 font-semibold py-2">Release year</h3>
                             <select className="select select-bordered md:pr-[473px]" name="release" id="">
                                 <option disabled selected>Select release year</option>
                                 <option value="2024">2024</option>
@@ -93,7 +95,7 @@ const AddMovie = () => {
                             </select>
                         </div>
                         <div className="">
-                            <h3 className="text-lg font-semibold py-2">Rating</h3>
+                            <h3 className="text-lg text-cyan-500 font-semibold py-2">Rating</h3>
                             <input
                                 name="rating"
                                 type="text"
@@ -102,7 +104,7 @@ const AddMovie = () => {
                                 className="input input-bordered w-full " />
                         </div>
                         <div className="">
-                            <h3 className="text-lg font-semibold py-2">Summary</h3>
+                            <h3 className="text-lg text-cyan-500 font-semibold py-2">Summary</h3>
                             <textarea
                                 name="textarea"
                                 placeholder="summary"
