@@ -14,12 +14,7 @@ const Navbar = () => {
                 toast.success("Signout successfull");
             })
             .catch(error => {
-                console.log(error);
             })
-        const [theme, setTheme] = useState(false);
-        const handleTheme = () => {
-            setTheme(!theme);
-        }
     }
     return (
         <div className=" pt-6  ">

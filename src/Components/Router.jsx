@@ -29,7 +29,7 @@ const Router = createBrowserRouter([
             {
                 path: "/allmovies",
                 element: <AllMovies></AllMovies>,
-                loader: () => fetch('http://localhost:5000/movies')
+                loader: () => fetch('https://assaignment-10-movie-portal.vercel.app/movies')
             },
             {
                 path: "/login",
@@ -46,11 +46,11 @@ const Router = createBrowserRouter([
             {
                 path: "/myfavorites",
                 element: <PrivetRoute><MyFavorites></MyFavorites></PrivetRoute>,
-                loader: () => fetch("http://localhost:5000/favorites")
+                loader: () => fetch("https://assaignment-10-movie-portal.vercel.app/favorites")
             },
             {
                 path: "/movie/:id",
-                loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`),
+                loader: ({ params }) => fetch(`https://assaignment-10-movie-portal.vercel.app/movies/${params.id}`),
                 element: <MovieDetails></MovieDetails>
 
             },

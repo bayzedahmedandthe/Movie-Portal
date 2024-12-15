@@ -25,24 +25,19 @@ const Register = () => {
         if(!passwordRegex.test(password)){
             return toast.error("password at least one uppercase, one lowercase")
         }
-        // console.log(email, password);
         creatUser(email, password)
             .then(result => {
-                // console.log(result.user);
                 navigate("/")
                 toast.success("Registation successfull");
                 
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
-                        // console.log("update user");
                         setUser((prevUser) => { return { ...prevUser, displayName: name, photoURL: photo } })
                     })
                     .catch((error => {
-                        console.log(error);
                     }))
             })
             .catch(error => {
-                console.log(error);
             })
 
     }

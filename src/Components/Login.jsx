@@ -12,13 +12,11 @@ const Login = () => {
     const handleLoginWithGoogle = () => {
         signInWithPopup(auth, provider)
             .then(result => {
-                console.log(result);
                 navigate("/")
                 toast.success("Login successfull")
 
             })
             .catch(error => {
-                console.log(error);
             })
     }
     const { loginUser } = useContext(AuthContext);
@@ -27,15 +25,12 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        // console.log(email, password);
         loginUser(email, password)
             .then(result => {
-                console.log(result);
                 navigate("/")
                 toast.success("Login successfull")
             })
             .catch(error => {
-                console.log(error);
                 toast.error("Invalid credential")
             })
     }

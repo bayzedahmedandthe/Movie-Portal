@@ -7,7 +7,7 @@ const AllMovies = () => {
    const [data, setData] = useState(movieData);
     const [search, setSearch] = useState("");
     useEffect(() => {
-        fetch(`http://localhost:5000/movies?searchparams=${search}`)
+        fetch(`https://assaignment-10-movie-portal.vercel.app/movies?searchparams=${search}`)
         .then(res => res.json())
         .then(data => setData(data))
     }, [search])

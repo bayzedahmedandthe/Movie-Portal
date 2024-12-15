@@ -13,7 +13,7 @@ const AddMovie = () => {
         const rating = form.rating.value;
         const textarea = form.textarea.value;
         const movieDetails = {poster, title, genre, duration, release, rating, textarea,};
-        fetch("http://localhost:5000/movies",{
+        fetch("https://assaignment-10-movie-portal.vercel.app/movies",{
             method: "post",
            headers: {
              "content-type": "application/json"
@@ -25,7 +25,7 @@ const AddMovie = () => {
             form.reset();
             toast.success("Added successfull")
         })
-        fetch("http://localhost:5000/highest-rated-reviews", {
+        fetch("https://assaignment-10-movie-portal.vercel.app/highest-rated-reviews", {
             method: "post", 
             headers:{
                 "content-type": "application/json"

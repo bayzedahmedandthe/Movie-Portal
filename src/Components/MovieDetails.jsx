@@ -13,7 +13,7 @@ const MovieDetails = () => {
     const handleAddToFavorite = () => {
        const userEmail = user.email;
        const favoriteData = { poster, title, genre, duration, release, rating, userEmail};
-       fetch("http://localhost:5000/favorites", {
+       fetch("https://assaignment-10-movie-portal.vercel.app/favorites", {
         method: "post",
         headers: {
             "content-type": "application/json",
@@ -28,13 +28,11 @@ const MovieDetails = () => {
        })
     }
     const handleDelete =(_id) => {
-        console.log(_id);
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`https://assaignment-10-movie-portal.vercel.app/movies/${_id}`, {
             method: "DELETE"
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data.deletedCount > 0)
                 toast.success("Deleted successfull")
             navigate("/allmovies")

@@ -6,12 +6,11 @@ const MyFavorites = () => {
     const favoriteData = useLoaderData();
     const [movieData, setmovieData] = useState(favoriteData);
     const handleDelete = _id => {
-        fetch(`http://localhost:5000/favorites/${_id}`, {
+        fetch(`https://assaignment-10-movie-portal.vercel.app/favorites/${_id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.deletedCount > 0) {
                     const remaining = movieData.filter(movie => movie._id !== _id);
                     setmovieData(remaining);

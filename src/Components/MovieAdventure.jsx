@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const MovieAdventure = () => {
     const [movieData, setMovieData] = useState([]);
     // const movieData = useLoaderData();
-    fetch("http://localhost:5000/highest-rated-reviews")
+    fetch("https://assaignment-10-movie-portal.vercel.app/highest-rated-reviews")
     .then(res => res.json())
     .then(data => setMovieData(data))
     

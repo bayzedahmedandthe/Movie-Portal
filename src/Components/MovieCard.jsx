@@ -7,7 +7,6 @@ const MovieCard = ({ movieData }) => {
     useEffect(() => {
         Aos.init();
     }, [])
-    // console.log(movieData);
     const { user } = useContext(AuthContext);
     const { poster, title, genre, duration, release, rating, _id } = movieData;
     return (
