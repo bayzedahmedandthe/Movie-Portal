@@ -10,7 +10,7 @@
 * if you click on add to favorite button then this movie will be added to your favorite movie which you can see when you go to the favorites route.
 *** 
 - ## NPM packages usage: 
-    animate.css
+* animate.css
 * aos
 * firebase
 * react
@@ -19,3 +19,5 @@
 * react-icons
 * react-router-dom
 * react-toastify
+
+ To run this project locally open the terminal and type this command "npm run dev"
